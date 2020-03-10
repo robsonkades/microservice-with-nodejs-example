@@ -9,6 +9,7 @@
     "dev:debug": "nodemon --inspect src/server.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "pg": "^7.18.2",
     "pg-hstore": "^2.3.3",
