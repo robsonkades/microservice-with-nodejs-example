@@ -18,6 +18,8 @@ export default async (req, res, next) => {
       authConfig.secret
     );
     req.user = { id, name, email };
+
+    return next();
   } catch (error) {
     return res.status(401).json({ error: 'Token não autorizado!' });
   }
