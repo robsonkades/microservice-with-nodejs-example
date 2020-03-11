@@ -16,8 +16,6 @@ routes.post('/users', UserController.store);
 routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
-routes.post('/files', uploads.single('file'), (req, res) => {
-  return res.json();
-});
+routes.post('/files', uploads.single('file'), FileController.store);
 
 module.exports = routes;
