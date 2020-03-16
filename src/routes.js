@@ -25,6 +25,7 @@ routes.get('/providers', ProviderController.index);
 routes.post('/appointments', AppointmentController.store);
 routes.get('/appointments', AppointmentController.index);
 routes.get('/notifications', NotificationController.index);
+routes.get('/notifications/:id', NotificationController.update);
 routes.get('/schedule', ScheduleController.index);
 routes.post('/files', uploads.single('file'), FileController.store);
 
