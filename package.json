@@ -5,13 +5,19 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "dev:debug": "nodemon --inspect src/server.js",
+    "dev": "npm-run-all -p dev:*",
+    "dev:server": "nodemon src/server.js",
+    "dev:queue": "nodemon src/queue.js",
+    "debug": "nodemon --inspect src/server.js",
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
+    "@sentry/node": "^5.14.2",
     "bcryptjs": "^2.4.3",
+    "bull": "^3.13.0",
+    "bull-board": "^0.7.0",
     "date-fns": "^2.0.0-beta.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "jsonwebtoken": "^8.5.1",
@@ -35,6 +41,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "sequelize-cli": "^5.5.1",
     "sucrase": "^3.12.1"

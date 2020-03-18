@@ -1,6 +1,8 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 
+import Queue from '../../lib/Queue';
+
 class UserController {
   async store(req, res) {
     const schema = Yup.object().shape({
@@ -24,7 +26,12 @@ class UserController {
     }
 
     const { id, name, email, provider } = await User.create(req.body);
-    return res.json({ id, name, email, provider });
+
+    const user = { id, name, email, provider };
+
+    Queue.add('UserRegistration', { user });
+
+    return res.json(user);
   }
 
   async update(req, res) {
