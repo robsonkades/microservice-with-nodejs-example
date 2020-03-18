@@ -7,6 +7,7 @@ import multerConfig from '~/config/multer';
 import Queue from '~/lib/Queue';
 
 import AppointmentController from '~/app/controllers/AppointmentController';
+import AvailableController from '~/app/controllers/AvailableController';
 import FileController from '~/app/controllers/FileController';
 import NotificationController from '~/app/controllers/NotificationController';
 import ProviderController from '~/app/controllers/ProviderController';
@@ -27,6 +28,7 @@ routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
 routes.get('/providers', ProviderController.index);
+routes.get('/providers/:providerId/available', AvailableController.index);
 routes.post('/appointments', AppointmentController.store);
 routes.get('/appointments', AppointmentController.index);
 routes.get('/appointments/:id', AppointmentController.delete);
