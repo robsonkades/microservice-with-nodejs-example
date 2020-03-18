@@ -1,11 +1,11 @@
-import Sequelize from 'sequelize';
 import mongoose from 'mongoose';
+import Sequelize from 'sequelize';
 
-import configDatabase from '../config/database';
+import configDatabase from '~/config/database';
 
-import User from '../app/models/User';
-import File from '../app/models/File';
-import Appointment from '../app/models/Appointment';
+import Appointment from '~/app/models/Appointment';
+import File from '~/app/models/File';
+import User from '~/app/models/User';
 
 const models = [User, File, Appointment];
 

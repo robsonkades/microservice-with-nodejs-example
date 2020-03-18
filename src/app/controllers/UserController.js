@@ -1,7 +1,8 @@
 import * as Yup from 'yup';
-import User from '../models/User';
 
-import Queue from '../../lib/Queue';
+import Queue from '~/lib/Queue';
+
+import User from '~/app/models/User';
 
 class UserController {
   async store(req, res) {

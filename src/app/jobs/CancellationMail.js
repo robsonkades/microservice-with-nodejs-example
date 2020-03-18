@@ -1,19 +1,16 @@
 import { format } from 'date-fns';
 import { pt } from 'date-fns/locale';
 
-import Mail from '../../lib/Mail';
+import Mail from '~/lib/Mail';
 
-/**
- * Options
-    limiter: {
-      max: 90,
-      duration: 1000,
-    },
- */
 export default {
   key: 'CancelationEmail',
   options: {
     delay: 5000,
+    limiter: {
+      max: 90,
+      duration: 1000,
+    },
   },
   async handle({ data }) {
     const { appointment } = data;

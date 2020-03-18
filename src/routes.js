@@ -1,19 +1,19 @@
+import BullBoard from 'bull-board';
 import { Router } from 'express';
 import multer from 'multer';
-import BullBoard from 'bull-board';
 
-import Queue from './lib/Queue';
+import multerConfig from '~/config/multer';
 
-import authMiddleware from './app/middlewares/auth';
-import multerConfig from './config/multer';
+import Queue from '~/lib/Queue';
 
-import UserController from './app/controllers/UserController';
-import SessionController from './app/controllers/SessionController';
-import FileController from './app/controllers/FileController';
-import ProviderController from './app/controllers/ProviderController';
-import AppointmentController from './app/controllers/AppointmentController';
-import ScheduleController from './app/controllers/ScheduleController';
-import NotificationController from './app/controllers/NotificationController';
+import AppointmentController from '~/app/controllers/AppointmentController';
+import FileController from '~/app/controllers/FileController';
+import NotificationController from '~/app/controllers/NotificationController';
+import ProviderController from '~/app/controllers/ProviderController';
+import ScheduleController from '~/app/controllers/ScheduleController';
+import SessionController from '~/app/controllers/SessionController';
+import UserController from '~/app/controllers/UserController';
+import authMiddleware from '~/app/middlewares/auth';
 
 BullBoard.setQueues(Queue.queues.map(queue => queue.bull));
 
