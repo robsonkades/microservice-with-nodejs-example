@@ -1,4 +1,5 @@
-import 'dotenv/config';
+import '~/bootstrap';
+
 import mongoose from 'mongoose';
 import Sequelize from 'sequelize';
 
