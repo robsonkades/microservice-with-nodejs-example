@@ -1,4 +1,5 @@
-import 'dotenv/config';
+import '~/bootstrap';
+
 import * as Sentry from '@sentry/node';
 import express from 'express';
 import 'express-async-errors';
