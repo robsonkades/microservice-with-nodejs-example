@@ -2,12 +2,11 @@ import { startOfHour, parseISO, isBefore, format, subHours } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import * as Yup from 'yup';
 
-import Queue from '~/lib/Queue';
-
-import Appointment from '~/app/models/Appointment';
-import File from '~/app/models/File';
-import User from '~/app/models/User';
-import Notification from '~/app/schemas/Notification';
+import Queue from '../../lib/Queue';
+import Appointment from '../models/Appointment';
+import File from '../models/File';
+import User from '../models/User';
+import Notification from '../schemas/Notification';
 
 class AppointmentController {
   async index(req, res) {

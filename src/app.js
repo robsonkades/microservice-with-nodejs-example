@@ -1,4 +1,4 @@
-import '~/bootstrap';
+import './bootstrap';
 
 import * as Sentry from '@sentry/node';
 import express from 'express';
@@ -6,11 +6,10 @@ import 'express-async-errors';
 import path from 'path';
 import Youch from 'youch';
 
-import sentryConfig from '~/config/sentry';
+import sentryConfig from './config/sentry';
+import routes from './routes';
 
-import routes from '~/routes';
-
-import '~/database';
+import './database';
 
 class App {
   constructor() {

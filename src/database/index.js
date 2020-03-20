@@ -1,13 +1,12 @@
-import '~/bootstrap';
+import '../bootstrap';
 
 import mongoose from 'mongoose';
 import Sequelize from 'sequelize';
 
-import configDatabase from '~/config/database';
-
-import Appointment from '~/app/models/Appointment';
-import File from '~/app/models/File';
-import User from '~/app/models/User';
+import Appointment from '../app/models/Appointment';
+import File from '../app/models/File';
+import User from '../app/models/User';
+import configDatabase from '../config/database';
 
 const models = [User, File, Appointment];
 
@@ -21,7 +20,7 @@ class Database {
     this.connection = new Sequelize(configDatabase);
     models.map(model => model.init(this.connection));
     models.map(
-      model => model.associate && models.associate(this.connection.models)
+      model => model.associate && model.associate(this.connection.models)
     );
   }
 

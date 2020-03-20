@@ -19,7 +19,6 @@
     "bcryptjs": "^2.4.3",
     "bull": "^3.13.0",
     "bull-board": "^0.7.0",
-    "customize-cra": "^0.9.1",
     "date-fns": "^2.0.0-beta.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -43,7 +42,6 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",
-    "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-import-helpers": "^1.0.2",
     "eslint-plugin-jest": "^23.8.2",
@@ -54,6 +52,7 @@
     "prettier": "^1.19.1",
     "sequelize-cli": "^5.5.1",
     "sqlite3": "^4.1.1",
-    "sucrase": "^3.12.1"
+    "sucrase": "^3.12.1",
+    "supertest": "^4.0.2"
   }
 }

@@ -24,22 +24,9 @@ module.exports = {
       'warn',
       {
         newlinesBetween: 'always',
-        groups: [
-          'module',
-          '/^~/config/',
-          '/^~/lib/',
-          '/^~//',
-          [('parent', 'sibling', 'index')],
-        ],
+        groups: ['module', [('parent', 'sibling', 'index')]],
         alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],
-  },
-  settings: {
-    'import/resolver': {
-      'babel-plugin-root-import': {
-        rootPathSuffix: 'src',
-      },
-    },
   },
 };

@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { pt } from 'date-fns/locale';
 
-import Mail from '~/lib/Mail';
+import Mail from '../../lib/Mail';
 
 export default {
   key: 'CancelationEmail',

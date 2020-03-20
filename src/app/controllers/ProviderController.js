@@ -1,5 +1,5 @@
-import File from '~/app/models/File';
-import User from '~/app/models/User';
+import File from '../models/File';
+import User from '../models/User';
 
 class ProviderController {
   async index(req, res) {

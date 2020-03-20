@@ -2,9 +2,8 @@
 
 import Queue from 'bull';
 
-import redisConfig from '~/config/redis';
-
-import * as jobs from '~/app/jobs';
+import * as jobs from '../app/jobs';
+import redisConfig from '../config/redis';
 
 const queues = Object.values(jobs).map(job => ({
   bull: new Queue(job.key, redisConfig),
