@@ -27,7 +27,8 @@ class UserController {
     const { id, name, email, provider } = await User.create(req.body);
     const user = { id, name, email, provider };
     Queue.add('UserRegistration', { user });
-    return res.json({ id: 1 });
+
+    return res.json(user);
   }
 
   async update(req, res) {

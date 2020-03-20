@@ -18,9 +18,11 @@ describe('User', () => {
     await MongoMock.disconnect();
   });
 
-  it('Deve registrar um usuário', async () => {
+  it('Deve criar um usuário', async () => {
+    // Assemble
     const spy = jest.spyOn(Queue, 'add').mockReturnThis();
 
+    // Action
     const response = await request(app)
       .post('/users')
       .send({
@@ -29,8 +31,9 @@ describe('User', () => {
         password: '123456',
       });
 
+    // Assertions
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toBeCalledWith(expect.anything(), expect.anything());
-    expect(response.body).toHaveProperty('id');
+    expect(response.body).toHaveProperty('id', 'name', 'provider');
   });
 });
