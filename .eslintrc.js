@@ -17,9 +17,16 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     camelcase: 'off',
+    'no-underscore-dangle': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'class-methods-use-this': 'off',
     'no-param-reassign': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['**/*.test.js', '__tests__/utils/*.js'],
+      },
+    ],
     'import-helpers/order-imports': [
       'warn',
       {

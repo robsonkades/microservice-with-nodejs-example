@@ -14,24 +14,20 @@ class UserController {
         .required()
         .min(6),
     });
-
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validação falhou!' });
     }
 
-    const userExists = await User.findOne({ where: { email: req.body.email } });
-
+    const userExists = await User.findOne({
+      where: { email: req.body.email },
+    });
     if (userExists) {
       return res.status(400).json({ error: 'Usuário já existe.' });
     }
-
     const { id, name, email, provider } = await User.create(req.body);
-
     const user = { id, name, email, provider };
-
     Queue.add('UserRegistration', { user });
-
-    return res.json(user);
+    return res.json({ id: 1 });
   }
 
   async update(req, res) {
