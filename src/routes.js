@@ -2,6 +2,7 @@ import BullBoard from 'bull-board';
 import { Router } from 'express';
 import multer from 'multer';
 
+import BruteForce from './config/brute';
 import multerConfig from './config/multer';
 import Queue from './lib/Queue';
 
@@ -26,8 +27,19 @@ BullBoard.setQueues(Queue.queues.map(queue => queue.bull));
 const routes = new Router();
 const uploads = multer(multerConfig);
 
-routes.post('/session', validateSessionStore, SessionController.store);
-routes.post('/users', validateUserStore, UserController.store);
+routes.post(
+  '/session',
+  BruteForce.prevent,
+  validateSessionStore,
+  SessionController.store
+);
+
+routes.post(
+  '/users',
+  BruteForce.prevent,
+  validateUserStore,
+  UserController.store
+);
 
 routes.use(authMiddleware);
 
