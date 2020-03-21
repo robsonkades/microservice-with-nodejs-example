@@ -34,6 +34,7 @@ module.exports = {
         groups: [
           'absolute',
           'module',
+          '/^../../lib/',
           ['sibling', 'parent'],
           '/^./app/middlewares/',
           '/^./app/controllers/',

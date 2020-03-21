@@ -1,4 +1,5 @@
 import Cache from '../../lib/Cache';
+
 import File from '../models/File';
 import User from '../models/User';
 

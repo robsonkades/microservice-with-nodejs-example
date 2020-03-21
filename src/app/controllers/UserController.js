@@ -1,5 +1,6 @@
 import Cache from '../../lib/Cache';
 import Queue from '../../lib/Queue';
+
 import User from '../models/User';
 
 class UserController {
