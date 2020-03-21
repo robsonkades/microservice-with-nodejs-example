@@ -1,3 +1,4 @@
+import Cache from '../../lib/Cache';
 import Queue from '../../lib/Queue';
 import User from '../models/User';
 
@@ -12,6 +13,10 @@ class UserController {
     const { id, name, email, provider } = await User.create(req.body);
     const user = { id, name, email, provider };
     Queue.add('UserRegistration', { user });
+
+    if (provider) {
+      await Cache.invalidate('providers');
+    }
 
     return res.json(user);
   }
