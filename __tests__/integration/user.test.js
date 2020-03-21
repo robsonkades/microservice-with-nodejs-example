@@ -2,6 +2,7 @@ import request from 'supertest';
 
 import app from '../../src/app';
 import Queue from '../../src/lib/Queue';
+import factory from '../utils/factories';
 import MongoMock from '../utils/mongoMock';
 import truncate from '../utils/truncate';
 

@@ -31,7 +31,15 @@ module.exports = {
       'warn',
       {
         newlinesBetween: 'always',
-        groups: ['module', [('parent', 'sibling', 'index')]],
+        groups: [
+          'absolute',
+          'module',
+          ['sibling', 'parent'],
+          '/^./app/middlewares/',
+          '/^./app/controllers/',
+          '/^./app/validators/',
+          'index',
+        ],
         alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],

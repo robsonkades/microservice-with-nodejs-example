@@ -2,6 +2,11 @@ import BullBoard from 'bull-board';
 import { Router } from 'express';
 import multer from 'multer';
 
+import multerConfig from './config/multer';
+import Queue from './lib/Queue';
+
+import authMiddleware from './app/middlewares/auth';
+
 import AppointmentController from './app/controllers/AppointmentController';
 import AvailableController from './app/controllers/AvailableController';
 import FileController from './app/controllers/FileController';
@@ -10,24 +15,30 @@ import ProviderController from './app/controllers/ProviderController';
 import ScheduleController from './app/controllers/ScheduleController';
 import SessionController from './app/controllers/SessionController';
 import UserController from './app/controllers/UserController';
-import authMiddleware from './app/middlewares/auth';
-import multerConfig from './config/multer';
-import Queue from './lib/Queue';
+
+import validateAppointmentStore from './app/validators/AppointmentStore';
+import validateSessionStore from './app/validators/SessionStore';
+import validateUserStore from './app/validators/UserStore';
+import validateUserUpdate from './app/validators/UserUpdate';
 
 BullBoard.setQueues(Queue.queues.map(queue => queue.bull));
 
 const routes = new Router();
 const uploads = multer(multerConfig);
 
-routes.post('/session', SessionController.store);
-routes.post('/users', UserController.store);
+routes.post('/session', validateSessionStore, SessionController.store);
+routes.post('/users', validateUserStore, UserController.store);
 
 routes.use(authMiddleware);
 
-routes.put('/users', UserController.update);
+routes.put('/users', validateUserUpdate, UserController.update);
 routes.get('/providers', ProviderController.index);
 routes.get('/providers/:providerId/available', AvailableController.index);
-routes.post('/appointments', AppointmentController.store);
+routes.post(
+  '/appointments',
+  validateAppointmentStore,
+  AppointmentController.store
+);
 routes.get('/appointments', AppointmentController.index);
 routes.get('/appointments/:id', AppointmentController.delete);
 routes.get('/notifications', NotificationController.index);
