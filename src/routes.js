@@ -1,8 +1,9 @@
 import BullBoard from 'bull-board';
 import { Router } from 'express';
+import Brute from 'express-brute';
 import multer from 'multer';
 
-import BruteForce from './config/brute';
+import BruteStore from './config/brute';
 import multerConfig from './config/multer';
 import Queue from './lib/Queue';
 
@@ -22,6 +23,7 @@ import validateSessionStore from './app/validators/SessionStore';
 import validateUserStore from './app/validators/UserStore';
 import validateUserUpdate from './app/validators/UserUpdate';
 
+const BruteForce = new Brute(BruteStore);
 BullBoard.setQueues(Queue.queues.map(queue => queue.bull));
 
 const routes = new Router();
