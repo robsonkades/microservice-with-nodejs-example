@@ -1,6 +1,7 @@
 import Cache from '../../lib/Cache';
 import Queue from '../../lib/Queue';
 
+import File from '../models/File';
 import User from '../models/User';
 
 class UserController {
@@ -43,9 +44,19 @@ class UserController {
       return res.status(400).json({ error: 'Senha inválida' });
     }
 
-    const { id, name, provider } = await User.update(req.body);
+    await User.update(req.body);
 
-    return res.json({ id, name, email, provider });
+    const { id, name, provider, avatar } = await User.findByPk(req.user.id, {
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+
+    return res.json({ id, name, email, provider, avatar });
   }
 }
 

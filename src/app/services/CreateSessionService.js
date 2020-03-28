@@ -1,8 +1,18 @@
+import File from '../models/File';
 import User from '../models/User';
 
 class CreateSessionService {
   async run({ email, password }) {
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({
+      where: { email },
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
 
     if (!user) {
       throw new Error('Usuário e/ou senha inválidos');

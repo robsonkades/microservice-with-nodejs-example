@@ -12,10 +12,10 @@ class SessionController {
       password,
     });
 
-    const { id, name } = user;
+    const { id, name, avatar, provider } = user;
 
     return res.status(200).json({
-      user: { id, name, email },
+      user: { id, name, email, avatar, provider },
       token: await jwt.sign({ id, name, email }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
       }),
